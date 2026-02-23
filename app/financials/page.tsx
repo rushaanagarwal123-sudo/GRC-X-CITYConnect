@@ -49,6 +49,18 @@ export default function FinancialsPage() {
 
             <h3 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 animate-slide-up delay-300">Annual Reports</h3>
             <div className="space-y-4">
+                <a href="/GRC-X-CITYConnect/Pinnacle-Insight-Consulting-Financials.xlsx" download className="flex items-center justify-between p-4 md:p-6 bg-white border border-gray-100 rounded-xl md:rounded-2xl hover:border-primary transition-all cursor-pointer group shadow-sm hover:shadow-md animate-slide-up" style={{ animationDelay: "0.3s" }}>
+                    <div className="flex items-center gap-3 md:gap-4">
+                        <div className="w-10 h-10 md:w-12 md:h-12 bg-olive-green/10 rounded-lg md:rounded-xl flex items-center justify-center text-olive-green text-xs md:text-sm font-bold group-hover:bg-olive-green group-hover:text-white transition-all shrink-0">
+                            XLS
+                        </div>
+                        <div>
+                            <h4 className="font-bold text-text-dark text-sm md:text-base">2025 5Y Projection</h4>
+                            <p className="text-xs text-gray-500">Pinnacle Insight Consulting Financials</p>
+                        </div>
+                    </div>
+                    <span className="text-primary font-bold text-xs md:text-sm group-hover:translate-x-1 transition-transform">Download</span>
+                </a>
                 {[2024, 2023].map((year, index) => (
                     <div key={year} className="flex items-center justify-between p-4 md:p-6 bg-white border border-gray-100 rounded-xl md:rounded-2xl hover:border-primary transition-all cursor-pointer group shadow-sm hover:shadow-md animate-slide-up" style={{ animationDelay: `${(index + 4) * 0.1}s` }}>
                         <div className="flex items-center gap-3 md:gap-4">
@@ -64,6 +76,7 @@ export default function FinancialsPage() {
                     </div>
                 ))}
             </div>
+
         </div>
     );
 }
