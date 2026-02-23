@@ -20,7 +20,7 @@ export default function RootLayout({
         <html lang="en">
             <body className={`${inter.variable} font-inter antialiased`}>
                 <Sidebar />
-                <main className="ml-[260px] min-h-screen flex flex-col">
+                <main className="ml-0 md:ml-[260px] min-h-screen flex flex-col">
                     <div className="flex-grow">
                         {children}
                     </div>
