@@ -7,7 +7,7 @@ export default function FinancialsPage() {
             <div className="bg-bg-gray p-12 rounded-3xl mb-16 animate-scale-in delay-200">
                 <h2 className="text-2xl font-bold mb-6">Transparency Matters</h2>
                 <p className="text-gray-600 leading-relaxed mb-8">
-                    CityConnect is committed to 100% financial transparency. We believe our donors and the communities we serve have a right to know exactly how funds are being utilized.
+                    CityConnect is committed to 100% financial transparency. We believe our donors and the communities we serve have a right to know exactly how funds are being utilized based on our latest operating audit.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -16,32 +16,32 @@ export default function FinancialsPage() {
                         <div className="space-y-4">
                             <div className="flex justify-between items-center text-sm">
                                 <span>Programs & Initiatives</span>
-                                <span className="font-bold">85%</span>
+                                <span className="font-bold">85.8%</span>
                             </div>
                             <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-                                <div className="h-full bg-primary w-[85%] transition-all duration-1000 ease-out"></div>
+                                <div className="h-full bg-primary w-[85.8%] transition-all duration-1000 ease-out"></div>
                             </div>
 
                             <div className="flex justify-between items-center text-sm mt-4">
-                                <span>Administrative</span>
-                                <span className="font-bold">10%</span>
+                                <span>Management & General</span>
+                                <span className="font-bold">9.5%</span>
                             </div>
                             <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-                                <div className="h-full bg-dark-teal w-[10%] transition-all duration-1000 ease-out delay-200"></div>
+                                <div className="h-full bg-dark-teal w-[9.5%] transition-all duration-1000 ease-out delay-200"></div>
                             </div>
 
                             <div className="flex justify-between items-center text-sm mt-4">
                                 <span>Fundraising</span>
-                                <span className="font-bold">5%</span>
+                                <span className="font-bold">4.7%</span>
                             </div>
                             <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-                                <div className="h-full bg-olive-green w-[5%] transition-all duration-1000 ease-out delay-400"></div>
+                                <div className="h-full bg-olive-green w-[4.7%] transition-all duration-1000 ease-out delay-400"></div>
                             </div>
                         </div>
                     </div>
 
                     <div className="flex flex-col justify-center border-l border-gray-200 pl-12">
-                        <h3 className="text-4xl font-black text-primary mb-2">$1.2M</h3>
+                        <h3 className="text-4xl font-black text-primary mb-2">$1.72M</h3>
                         <p className="text-sm font-bold text-gray-500 uppercase">2024 Operating Budget</p>
                     </div>
                 </div>
@@ -67,4 +67,3 @@ export default function FinancialsPage() {
         </div>
     );
 }
-
