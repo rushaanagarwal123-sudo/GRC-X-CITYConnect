@@ -1,16 +1,34 @@
-export default function LeadershipPage() {
-    const leaders = [
-        { name: "Richard Liu", role: "Executive Director", bio: "Former urban planner with 15 years of experience in Bronx community development." },
-        { name: "Laxmi Viswanathan", role: "Director of Operations", bio: "NYC native focused on logistics and grassroots organizing." },
-        { name: "Rushaan Argawal", role: "Head of Research", bio: "Social scientist specializing in urban connectivity and neighborhood health." },
-        { name: "Roberto Jay", role: "Community Liaison", bio: "Advocate for local neighborhood leaders and sustainable growth initiatives." },
-    ];
+import Image from "next/image";
 
-    const gradients = [
-        "from-primary to-dark-teal",
-        "from-dark-teal to-olive-green",
-        "from-olive-green to-primary",
-        "from-primary/80 to-dark-teal/80",
+export default function LeadershipPage() {
+    // Helper for GitHub Pages asset paths
+    const asset = (path: string) => `/GRC-X-CITYConnect${path}`;
+
+    const leaders = [
+        {
+            name: "Richard Liu",
+            role: "Executive Director",
+            bio: "Former urban planner with 15 years of experience in Bronx community development.",
+            image: "/Richard.jpeg"
+        },
+        {
+            name: "Laxmi Viswanathan",
+            role: "Director of Operations",
+            bio: "NYC native focused on logistics and grassroots organizing.",
+            image: "/Laxmi.jpeg"
+        },
+        {
+            name: "Rushaan Argawal",
+            role: "Head of Research",
+            bio: "Social scientist specializing in urban connectivity and neighborhood health.",
+            image: "/Rushaan.jpeg"
+        },
+        {
+            name: "Roberto Jay",
+            role: "Community Liaison",
+            bio: "Advocate for local neighborhood leaders and sustainable growth initiatives.",
+            image: "/Roberto.jpeg"
+        },
     ];
 
     return (
@@ -21,7 +39,14 @@ export default function LeadershipPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mt-16">
                 {leaders.map((leader, index) => (
                     <div key={leader.name} className="flex flex-col animate-scale-in" style={{ animationDelay: `${(index + 1) * 0.1}s` }}>
-                        <div className={`w-full aspect-square bg-gradient-to-br ${gradients[index % gradients.length]} rounded-3xl mb-6 overflow-hidden group relative`}>
+                        <div className="w-full aspect-square bg-bg-gray rounded-3xl mb-6 overflow-hidden group relative shadow-lg">
+                            <Image
+                                src={asset(leader.image)}
+                                alt={leader.name}
+                                fill
+                                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                priority={index < 4}
+                            />
                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500"></div>
                         </div>
                         <h3 className="text-2xl font-bold text-text-dark mb-1">{leader.name}</h3>
