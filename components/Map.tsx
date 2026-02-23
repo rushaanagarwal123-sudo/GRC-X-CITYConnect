@@ -36,8 +36,9 @@ const Map = () => {
             // Add GeoJSON source
             map.current.addSource("service-areas", {
                 type: "geojson",
-                data: "/service_areas.geojson",
+                data: "/GRC-X-CITYConnect/service_areas.geojson",
             });
+
 
             // Add fill layer
             map.current.addLayer({

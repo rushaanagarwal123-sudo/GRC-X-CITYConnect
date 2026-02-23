@@ -2,7 +2,6 @@ import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
 import { ArrowRight, MapPin, Target, ShieldCheck } from "lucide-react";
 
-
 export default function Home() {
     const highlightNeighborhoods = [
         "Morrisania",
@@ -10,25 +9,28 @@ export default function Home() {
         "Melrose",
     ];
 
+    // Helper for GitHub Pages asset paths
+    const asset = (path: string) => `/GRC-X-CITYConnect${path}`;
+
     return (
         <div className="flex flex-col">
             {/* Hero Section - Map First */}
-            <section id="map-hero" className="w-full bg-white py-20 px-12">
+            <section id="map-hero" className="w-full bg-white py-20 px-12 overflow-hidden">
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-16">
                     {/* Map Image */}
-                    <div className="relative rounded-3xl shadow-2xl overflow-hidden border border-gray-100 flex-1 max-w-2xl">
+                    <div className="relative rounded-3xl shadow-2xl overflow-hidden border border-gray-100 flex-1 max-w-2xl animate-scale-in">
                         <Image
-                            src="/static-map.jpg"
+                            src={asset("/static-map.jpg")}
                             alt="Map of NYC Service Areas"
                             width={850}
                             height={1024}
-                            className="w-full h-auto"
+                            className="w-full h-auto transition-transform duration-700 hover:scale-105"
                             priority
                         />
                     </div>
 
                     {/* Call to Action */}
-                    <div className="flex flex-col items-center flex-1 max-w-md">
+                    <div className="flex flex-col items-center flex-1 max-w-md animate-slide-right delay-200">
                         <a
                             href="https://docs.google.com/forms/d/e/1FAIpQLSd3b2Uj0dfcLGjABHlGVjkJ8kAN0fX35t-P8wAlwsB2DrtUZQ/viewform?usp=header"
                             target="_blank"
@@ -45,35 +47,35 @@ export default function Home() {
                                 Open Form <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </div>
                         </a>
-                        <p className="mt-6 text-gray-400 text-xs font-medium uppercase tracking-widest">Available 24/7 for community support</p>
+                        <p className="mt-6 text-gray-400 text-xs font-medium uppercase tracking-widest animate-reveal delay-400">Available 24/7 for community support</p>
                     </div>
                 </div>
             </section>
 
             {/* Trust / Stats Bar */}
-            <section className="bg-white border-y border-gray-100 py-10">
+            <section className="bg-white border-y border-gray-100 py-10 animate-reveal">
                 <div className="max-w-6xl mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
-                    <div className="flex items-start gap-5">
-                        <div className="p-3 bg-primary/10 rounded-2xl">
-                            <Target className="text-primary" size={28} />
+                    <div className="flex items-start gap-5 group transition-all duration-300 hover:translate-y-[-4px]">
+                        <div className="p-3 bg-primary/10 rounded-2xl group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                            <Target className="text-primary group-hover:text-white" size={28} />
                         </div>
                         <div>
                             <h4 className="font-bold text-text-dark mb-1">Targeted Impact</h4>
                             <p className="text-sm text-gray-500">Focusing on neighborhoods with the highest need for connectivity.</p>
                         </div>
                     </div>
-                    <div className="flex items-start gap-5">
-                        <div className="p-3 bg-primary/10 rounded-2xl">
-                            <ShieldCheck className="text-primary" size={28} />
+                    <div className="flex items-start gap-5 group transition-all duration-300 hover:translate-y-[-4px]">
+                        <div className="p-3 bg-primary/10 rounded-2xl group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                            <ShieldCheck className="text-primary group-hover:text-white" size={28} />
                         </div>
                         <div>
                             <h4 className="font-bold text-text-dark mb-1">WCAG AA Compliant</h4>
                             <p className="text-sm text-gray-500">Accessible tools for all community members to stay informed.</p>
                         </div>
                     </div>
-                    <div className="flex items-start gap-5">
-                        <div className="p-3 bg-primary/10 rounded-2xl">
-                            <ArrowRight className="text-primary" size={28} />
+                    <div className="flex items-start gap-5 group transition-all duration-300 hover:translate-y-[-4px]">
+                        <div className="p-3 bg-primary/10 rounded-2xl group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                            <ArrowRight className="text-primary group-hover:text-white" size={28} />
                         </div>
                         <div>
                             <h4 className="font-bold text-text-dark mb-1">Community Driven</h4>
@@ -86,7 +88,7 @@ export default function Home() {
             {/* Featured Service Areas */}
             <section className="py-24 px-8 bg-bg-gray">
                 <div className="max-w-6xl mx-auto">
-                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 animate-slide-up">
                         <div className="max-w-2xl">
                             <h2 className="text-4xl font-black text-text-dark mb-6 leading-tight">
                                 Our Primary Focus Areas
@@ -99,7 +101,7 @@ export default function Home() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {highlightNeighborhoods.map((name, index) => (
-                            <div key={name} className="group bg-white p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-primary/20">
+                            <div key={name} className={`group bg-white p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-primary/20 animate-slide-up`} style={{ animationDelay: `${(index + 1) * 0.1}s` }}>
                                 <div className="text-primary font-black text-5xl mb-6 opacity-10 group-hover:opacity-20 transition-opacity">0{index + 1}</div>
                                 <h3 className="text-2xl font-bold text-text-dark mb-4">{name}</h3>
                                 <p className="text-gray-500 text-sm leading-relaxed mb-8">
@@ -119,7 +121,7 @@ export default function Home() {
             <section className="py-24 px-8 bg-white" id="contact">
                 <div className="max-w-6xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                        <div>
+                        <div className="animate-slide-right">
                             <span className="text-primary font-black uppercase tracking-widest text-sm mb-6 block">Get in Touch</span>
                             <h2 className="text-5xl font-black text-text-dark mb-8 leading-[1.1]">
                                 Have a question? We’d love to hear from you.
@@ -129,18 +131,18 @@ export default function Home() {
                             </p>
 
                             <div className="space-y-8">
-                                <div className="flex items-center gap-6">
-                                    <div className="w-14 h-14 bg-bg-gray rounded-2xl flex items-center justify-center">
-                                        <MapPin className="text-dark-teal" size={24} />
+                                <div className="flex items-center gap-6 group">
+                                    <div className="w-14 h-14 bg-bg-gray rounded-2xl flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                                        <MapPin className="text-dark-teal group-hover:text-primary" size={24} />
                                     </div>
                                     <div>
                                         <h4 className="font-bold text-text-dark">Official Address</h4>
                                         <p className="text-gray-500 text-sm">Melrose Park, Bronx, NY 10451</p>
                                     </div>
                                 </div>
-                                <div className="flex items-center gap-6">
-                                    <div className="w-14 h-14 bg-bg-gray rounded-2xl flex items-center justify-center">
-                                        <Target className="text-dark-teal" size={24} />
+                                <div className="flex items-center gap-6 group">
+                                    <div className="w-14 h-14 bg-bg-gray rounded-2xl flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                                        <Target className="text-dark-teal group-hover:text-primary" size={24} />
                                     </div>
                                     <div>
                                         <h4 className="font-bold text-text-dark">Email Us</h4>
@@ -150,7 +152,9 @@ export default function Home() {
                             </div>
                         </div>
 
-                        <ContactForm />
+                        <div className="animate-scale-in delay-200">
+                            <ContactForm />
+                        </div>
                     </div>
                 </div>
             </section>

@@ -7,15 +7,15 @@ export default function LeadershipPage() {
 
     return (
         <div className="py-24 px-12 max-w-5xl">
-            <h1 className="text-5xl font-black text-text-dark mb-8">Our Leadership</h1>
-            <div className="h-1 w-24 bg-primary mb-12 rounded-full"></div>
+            <h1 className="text-5xl font-black text-text-dark mb-8 animate-slide-right">Our Leadership</h1>
+            <div className="h-1 w-24 bg-primary mb-12 rounded-full animate-reveal delay-100"></div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-16">
-                {leaders.map((leader) => (
-                    <div key={leader.name} className="flex flex-col">
-                        <div className="w-full aspect-square bg-bg-gray rounded-3xl mb-6 overflow-hidden">
+                {leaders.map((leader, index) => (
+                    <div key={leader.name} className="flex flex-col animate-scale-in" style={{ animationDelay: `${(index + 1) * 0.1}s` }}>
+                        <div className="w-full aspect-square bg-bg-gray rounded-3xl mb-6 overflow-hidden group">
                             {/* Image placeholder */}
-                            <div className="w-full h-full flex items-center justify-center text-gray-300 font-bold text-lg italic">
+                            <div className="w-full h-full flex items-center justify-center text-gray-300 font-bold text-lg italic group-hover:bg-primary/5 transition-colors duration-500">
                                 Photo Coming Soon
                             </div>
                         </div>
@@ -28,3 +28,4 @@ export default function LeadershipPage() {
         </div>
     );
 }
+

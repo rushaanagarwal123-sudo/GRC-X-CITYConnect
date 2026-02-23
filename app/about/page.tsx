@@ -1,9 +1,9 @@
 export default function AboutPage() {
     return (
         <div className="py-24 px-12 max-w-4xl">
-            <h1 className="text-5xl font-black text-text-dark mb-8">About Us</h1>
-            <div className="h-1 w-24 bg-primary mb-12 rounded-full"></div>
-            <div className="prose prose-lg text-gray-600 space-y-8">
+            <h1 className="text-5xl font-black text-text-dark mb-8 animate-slide-right">About Us</h1>
+            <div className="h-1 w-24 bg-primary mb-12 rounded-full animate-reveal delay-100"></div>
+            <div className="prose prose-lg text-gray-600 space-y-8 animate-slide-up delay-200">
                 <p>
                     Founded in 2024, CityConnect is a grassroots nonprofit organization dedicated to bridging the digital and social divide in New York City's underserved neighborhoods.
                 </p>
@@ -18,3 +18,4 @@ export default function AboutPage() {
         </div>
     );
 }
+
