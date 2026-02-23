@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #2FA4A9;
+    --color-dark-teal: #1F6F73;
+    --color-olive-green: #6B8E23;
+    --color-bg-gray: #F2F2F2;
+    --color-text-dark: #1A1A1A;
+
+    --font-inter: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+:root {
+    --foreground-rgb: 26, 26, 26;
+    --background-start-rgb: 242, 242, 242;
+    --background-end-rgb: 242, 242, 242;
+}
+
+body {
+    color: theme(--color-text-dark);
+    background: theme(--color-bg-gray);
+    font-family: theme(--font-inter);
+}
+
+/* Mapbox specific styles */
+.mapboxgl-ctrl-bottom-right,
+.mapboxgl-ctrl-bottom-left {
+    display: none !important;
+}
+
+.custom-marker {
+    width: 20px;
+    height: 20px;
+    background-color: #C0392B;
+    border: 2px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
