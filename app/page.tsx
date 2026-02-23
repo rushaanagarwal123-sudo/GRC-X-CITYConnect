@@ -1,10 +1,7 @@
-git config --global user.email "you@example.com"
-  git config --global user.name "Your Name"
-
-
 import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
 import { ArrowRight, MapPin, Target, ShieldCheck } from "lucide-react";
+
 
 export default function Home() {
     const highlightNeighborhoods = [
