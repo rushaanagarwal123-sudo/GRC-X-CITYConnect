@@ -1,6 +1,6 @@
 import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
-import Map from "@/components/Map";
+import MapWrapper from "@/components/MapWrapper";
 import { ArrowRight, MapPin, Target, ShieldCheck } from "lucide-react";
 
 export default function Home() {
@@ -20,7 +20,7 @@ export default function Home() {
                 <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-16">
                     {/* Interactive Map */}
                     <div className="relative rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden border border-gray-100 flex-1 w-full min-h-[500px] md:min-h-[600px] animate-scale-in">
-                        <Map />
+                        <MapWrapper />
                     </div>
 
                     {/* Call to Action */}

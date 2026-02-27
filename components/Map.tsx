@@ -2,11 +2,9 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
 import { X } from "lucide-react";
 
-// Use environment variable for Mapbox access token
-mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || "";
+// Token moved to inside the component to avoid Next.js dynamic chunk process ReferenceError
 
 interface NeighborhoodData {
     name: string;
@@ -44,21 +42,40 @@ const Map = () => {
         if (map.current) return;
         if (!mapContainer.current) return;
 
-        map.current = new mapboxgl.Map({
-            container: mapContainer.current,
-            style: "mapbox://styles/mapbox/light-v11",
-            center: [-73.905, 40.835], // Centered between the points
-            zoom: 12.5,
-            scrollZoom: false,
-        });
+        console.log('Initializing Mapbox...');
+        console.log('Mapbox WebGL Supported:', mapboxgl.supported());
+
+        // Set Mapbox token securely inside the client execution context
+        mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || "";
+        console.log('Access token length:', mapboxgl.accessToken.length);
+
+        if (!mapboxgl.supported()) {
+            console.error('Mapbox GL is not supported by this browser (WebGL might be disabled or unavailable).');
+            return;
+        }
+
+        try {
+            map.current = new mapboxgl.Map({
+                container: mapContainer.current,
+                style: "mapbox://styles/mapbox/light-v11",
+                center: [-73.905, 40.835], // Centered between the points
+                zoom: 12.5,
+                scrollZoom: false,
+            });
+            console.log('Map instance created successfully.');
+        } catch (e) {
+            console.error('Error creating Mapbox map instance:', e);
+            return;
+        }
 
         map.current.on("load", () => {
             if (!map.current) return;
 
             // Add GeoJSON source if it exists
+            const basePath = process.env.NODE_ENV === 'production' ? '/GRC-X-CITYConnect' : '';
             map.current.addSource("service-areas", {
                 type: "geojson",
-                data: "/GRC-X-CITYConnect/service_areas.geojson",
+                data: `${basePath}/service_areas.geojson`,
             });
 
             // Add fill layer
@@ -100,12 +117,13 @@ const Map = () => {
 
         return () => {
             map.current?.remove();
+            map.current = null;
         };
     }, []);
 
     return (
         <div className="relative w-full h-full min-h-[500px] rounded-2xl overflow-hidden shadow-inner">
-            <div ref={mapContainer} className="w-full h-full absolute inset-0" />
+            <div id="map" ref={mapContainer} className="w-full h-full absolute inset-0" />
 
             {selectedNeighborhood && (
                 <div className="absolute top-0 right-0 h-full w-full md:w-80 bg-white/95 backdrop-blur-md shadow-2xl z-10 animate-in slide-in-from-right duration-300 border-l border-gray-100 p-8 flex flex-col justify-center">
