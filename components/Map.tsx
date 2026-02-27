@@ -191,9 +191,9 @@ const Map = () => {
             )}
 
             {!selectedNeighborhood && (
-                <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-white/50 animate-reveal pointer-events-none">
-                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Interactive Map</p>
-                    <p className="text-sm font-bold text-text-dark">Click a marker to explore locations</p>
+                <div className="absolute bottom-3 left-3 md:bottom-6 md:left-6 bg-white/90 backdrop-blur-sm p-2.5 md:p-4 rounded-xl md:rounded-2xl shadow-lg border border-white/50 animate-reveal pointer-events-none max-w-[140px] md:max-w-none">
+                    <p className="text-[8px] md:text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-0.5 md:mb-1">Interactive Map</p>
+                    <p className="text-[11px] md:text-sm font-bold text-text-dark leading-tight md:leading-normal">Click a marker to explore locations</p>
                 </div>
             )}
         </div>
