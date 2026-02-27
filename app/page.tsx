@@ -19,7 +19,7 @@ export default function Home() {
             <section id="map-hero" className="w-full bg-white py-12 px-5 md:py-20 md:px-12 overflow-hidden">
                 <div className="max-w-7xl mx-auto flex flex-col items-center justify-center gap-10 md:gap-16">
                     {/* Interactive Map */}
-                    <div className="relative rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden border border-gray-100 w-full min-h-[500px] md:min-h-[600px] animate-scale-in">
+                    <div className="relative rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden border border-gray-100 w-full h-[500px] md:h-[600px] animate-scale-in">
                         <MapWrapper />
                     </div>
 

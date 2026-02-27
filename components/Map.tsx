@@ -79,22 +79,8 @@ const Map = () => {
             if (!map.current) return;
 
             // Add GeoJSON source if it exists
-            const basePath = process.env.NODE_ENV === 'production' ? '/GRC-X-CITYConnect' : '';
-            map.current.addSource("service-areas", {
-                type: "geojson",
-                data: `${basePath}/service_areas.geojson`,
-            });
-
-            // Add fill layer
-            map.current.addLayer({
-                id: "service-areas-fill",
-                type: "fill",
-                source: "service-areas",
-                paint: {
-                    "fill-color": "#2FA4A9",
-                    "fill-opacity": 0.1,
-                },
-            });
+            // We removed the service-areas polygon fill layer as to not clutter the map
+            // with large light blue/green bounding polygons
 
             // Add markers
             points.forEach((point) => {
@@ -159,7 +145,7 @@ const Map = () => {
     }, [selectedNeighborhood]);
 
     return (
-        <div className="relative w-full h-full min-h-[500px] rounded-2xl overflow-hidden shadow-inner">
+        <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-inner">
             <div id="map" ref={mapContainer} className="w-full h-full absolute inset-0" />
 
             {selectedNeighborhood && (
