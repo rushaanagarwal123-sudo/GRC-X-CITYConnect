@@ -1,5 +1,6 @@
 import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
+import Map from "@/components/Map";
 import { ArrowRight, MapPin, Target, ShieldCheck } from "lucide-react";
 
 export default function Home() {
@@ -16,17 +17,10 @@ export default function Home() {
         <div className="flex flex-col">
             {/* Hero Section - Map First */}
             <section id="map-hero" className="w-full bg-white py-12 px-5 md:py-20 md:px-12 overflow-hidden">
-                <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
-                    {/* Map Image */}
-                    <div className="relative rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden border border-gray-100 flex-1 max-w-2xl animate-scale-in">
-                        <Image
-                            src={asset("/static-map.jpg")}
-                            alt="Map of NYC Service Areas"
-                            width={850}
-                            height={1024}
-                            className="w-full h-auto transition-transform duration-700 hover:scale-105"
-                            priority
-                        />
+                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-16">
+                    {/* Interactive Map */}
+                    <div className="relative rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden border border-gray-100 flex-1 w-full min-h-[500px] md:min-h-[600px] animate-scale-in">
+                        <Map />
                     </div>
 
                     {/* Call to Action */}
