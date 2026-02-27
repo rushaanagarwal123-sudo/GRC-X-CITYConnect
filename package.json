@@ -23,8 +23,6 @@
   },
   "devDependencies": {
     "@types/geojson": "^7946.0.16",
-    "@types/mapbox__point-geometry": "^1.0.87",
-    "@types/mapbox-gl": "^3.4.1",
     "@types/node": "^22.13.4",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
