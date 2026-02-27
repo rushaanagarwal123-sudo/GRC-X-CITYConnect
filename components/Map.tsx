@@ -182,10 +182,6 @@ const Map = () => {
                                 <span className="text-gray-700 font-medium">Resource Allocation</span>
                             </div>
                         </div>
-
-                        <button className="w-full mt-10 bg-dark-teal text-white py-3 rounded-xl font-bold hover:bg-primary transition-all shadow-lg hover:shadow-primary/20 text-sm">
-                            View Data
-                        </button>
                     </div>
                 </div>
             )}
