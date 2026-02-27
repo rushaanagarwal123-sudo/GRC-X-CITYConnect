@@ -12,31 +12,31 @@ interface NeighborhoodData {
     description?: string;
 }
 
+const points: (NeighborhoodData & { coords: [number, number], description: string })[] = [
+    {
+        name: "Melrose",
+        type: "Primary Pilot Neighborhood",
+        coords: [-73.9153, 40.8448],
+        description: "Our initial focus area with established community partnerships and active youth programs."
+    },
+    {
+        name: "Morrisania",
+        type: "Proposed Service Area",
+        coords: [-73.9016, 40.8251],
+        description: "High-need district identified for upcoming digital literacy workshops and infrastructure expansion."
+    },
+    {
+        name: "Claremont Village",
+        type: "Proposed Service Area",
+        coords: [-73.8966, 40.8350],
+        description: "Planned hub for community connectivity, focused on linking local residents with essential services."
+    }
+];
+
 const Map = () => {
     const mapContainer = useRef<HTMLDivElement>(null);
     const map = useRef<mapboxgl.Map | null>(null);
     const [selectedNeighborhood, setSelectedNeighborhood] = useState<NeighborhoodData | null>(null);
-
-    const points: (NeighborhoodData & { coords: [number, number], description: string })[] = [
-        {
-            name: "Melrose",
-            type: "Primary Pilot Neighborhood",
-            coords: [-73.9153, 40.8448],
-            description: "Our initial focus area with established community partnerships and active youth programs."
-        },
-        {
-            name: "Morrisania",
-            type: "Proposed Service Area",
-            coords: [-73.9016, 40.8251],
-            description: "High-need district identified for upcoming digital literacy workshops and infrastructure expansion."
-        },
-        {
-            name: "Claremont Village",
-            type: "Proposed Service Area",
-            coords: [-73.8966, 40.8350],
-            description: "Planned hub for community connectivity, focused on linking local residents with essential services."
-        }
-    ];
 
     useEffect(() => {
         if (map.current) return;
@@ -55,11 +55,18 @@ const Map = () => {
         }
 
         try {
+            const initialBounds = new mapboxgl.LngLatBounds();
+            points.forEach(point => initialBounds.extend(point.coords));
+            const isMobile = window.innerWidth < 768;
+
             map.current = new mapboxgl.Map({
                 container: mapContainer.current,
                 style: "mapbox://styles/mapbox/light-v11",
-                center: [-73.905, 40.835], // Centered between the points
-                zoom: 12.5,
+                bounds: initialBounds,
+                fitBoundsOptions: {
+                    padding: isMobile ? 40 : 100,
+                    maxZoom: 14
+                },
                 scrollZoom: false,
             });
             console.log('Map instance created successfully.');
@@ -108,18 +115,48 @@ const Map = () => {
 
                     map.current?.flyTo({
                         center: point.coords,
-                        zoom: 14,
+                        zoom: 14.5, // Zoom in closer for better local context
                         essential: true
                     });
                 });
             });
         });
 
+        const handleResize = () => {
+            if (map.current && !selectedNeighborhood) {
+                const bounds = new mapboxgl.LngLatBounds();
+                points.forEach(point => bounds.extend(point.coords));
+                const isMobile = window.innerWidth < 768;
+                map.current.fitBounds(bounds, {
+                    padding: isMobile ? 40 : 100,
+                    maxZoom: 14,
+                    duration: 0 // instantaneous on resize
+                });
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+
         return () => {
+            window.removeEventListener('resize', handleResize);
             map.current?.remove();
             map.current = null;
         };
     }, []);
+
+    // Re-adjust map dynamically when info panel is closed by user
+    useEffect(() => {
+        if (!selectedNeighborhood && map.current) {
+            const bounds = new mapboxgl.LngLatBounds();
+            points.forEach(point => bounds.extend(point.coords));
+            const isMobile = window.innerWidth < 768;
+            map.current.fitBounds(bounds, {
+                padding: isMobile ? 40 : 100,
+                maxZoom: 14,
+                duration: 1200 // smooth transition back out
+            });
+        }
+    }, [selectedNeighborhood]);
 
     return (
         <div className="relative w-full h-full min-h-[500px] rounded-2xl overflow-hidden shadow-inner">

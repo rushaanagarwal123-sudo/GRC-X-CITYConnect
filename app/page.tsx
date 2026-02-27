@@ -17,14 +17,14 @@ export default function Home() {
         <div className="flex flex-col">
             {/* Hero Section - Map First */}
             <section id="map-hero" className="w-full bg-white py-12 px-5 md:py-20 md:px-12 overflow-hidden">
-                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-16">
+                <div className="max-w-7xl mx-auto flex flex-col items-center justify-center gap-10 md:gap-16">
                     {/* Interactive Map */}
-                    <div className="relative rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden border border-gray-100 flex-1 w-full min-h-[500px] md:min-h-[600px] animate-scale-in">
+                    <div className="relative rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden border border-gray-100 w-full min-h-[500px] md:min-h-[600px] animate-scale-in">
                         <MapWrapper />
                     </div>
 
                     {/* Call to Action */}
-                    <div className="flex flex-col items-center flex-1 max-w-md w-full animate-slide-right delay-200">
+                    <div className="flex flex-col items-center w-full max-w-3xl animate-slide-up delay-200">
                         <a
                             href="https://docs.google.com/forms/d/e/1FAIpQLSd3b2Uj0dfcLGjABHlGVjkJ8kAN0fX35t-P8wAlwsB2DrtUZQ/viewform?usp=header"
                             target="_blank"
