@@ -102,10 +102,6 @@ export default function Home() {
                                 <p className="text-gray-500 text-sm leading-relaxed mb-6 md:mb-8">
                                     Serving residents through dedicated community centers and local advocacy networks established in {new Date().getFullYear() - 2}.
                                 </p>
-                                <div className="flex items-center gap-2 text-primary font-bold text-sm cursor-pointer hover:gap-4 transition-all">
-                                    <span>View Initiatives</span>
-                                    <ArrowRight size={16} />
-                                </div>
                             </div>
                         ))}
                     </div>
